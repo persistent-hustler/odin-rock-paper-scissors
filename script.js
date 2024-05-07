@@ -6,4 +6,15 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-console.log(getComputerChoice());
+function getHumanChoice() {
+    let input = prompt('Pick one: \n r : Rock \n p : Paper \n s : Scissors');
+    input = input.charAt(0).toLowerCase();
+    let humanChoice = (input === 'r') ? 'rock' :
+    (input === 'p') ? 'paper' :
+    (input === 's') ? 'scissors' :
+    'invalid choice';
+
+    return humanChoice;
+}
+
+console.log(getHumanChoice());
