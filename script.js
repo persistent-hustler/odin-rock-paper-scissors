@@ -1,5 +1,9 @@
 let humanScore = 0;
 let computerScore = 0;
+let humanChoice = getHumanChoice();
+let computerChoice = getComputerChoice();
+let roundResult = playRound(humanChoice, computerChoice);
+console.log(roundResult);
 
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3);
@@ -15,7 +19,37 @@ function getHumanChoice() {
     let humanChoice = (input === 'r') ? 'rock' :
     (input === 'p') ? 'paper' :
     (input === 's') ? 'scissors' :
-    'invalid choice';
+    'invalid human choice';
 
     return humanChoice;
+}
+
+function playRound(humanChoice, computerChoice) {
+    let roundResult;
+    switch(computerChoice) {
+        case 'rock' :
+            roundResult = (humanChoice === 'rock') ? 'tie' :
+            (humanChoice === 'paper') ? 'win' :
+            (humanChoice === 'scissors') ? 'lose' :
+            'invalid human choice';
+            break;
+        
+        case 'paper' :
+            roundResult = (humanChoice === 'rock') ? 'lose' :
+            (humanChoice === 'paper') ? 'tie' :
+            (humanChoice === 'scissors') ? 'win' :
+            'invalid human choice' ;
+            break;
+        
+        case 'scissors' :
+            roundResult = (humanChoice === 'rock') ? 'win' :
+            (humanChoice === 'paper') ? 'lose' :
+            (humanChoice === 'scissors') ? 'tie' :
+            'invalid human choice' ;
+            break;
+        
+        default : roundResult = 'computer choice error'
+    }
+
+    return roundResult;
 }
