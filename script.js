@@ -1,16 +1,43 @@
-let humanScore = 0;
-let computerScore = 0;
-let humanChoice = getHumanChoice();
-let computerChoice = getComputerChoice();
-let roundResult = playRound(humanChoice, computerChoice);
-console.log(roundResult);
+playGame();
 
-function getComputerChoice() {
-    let randomNumber = Math.floor(Math.random() * 3);
-    let computerChoice = (randomNumber === 0) ? 'rock' :
-    (randomNumber === 1) ? 'paper' : 'scissors';
 
-    return computerChoice;
+function playGame() {
+    let roundResult;
+    let humanScore = 0;
+    let computerScore = 0;
+
+    for (let round = 1; round <= 5; round++) {
+        let humanChoice = getHumanChoice();
+        let computerChoice = getComputerChoice();
+        roundResult = playRound(humanChoice, computerChoice);
+        switch(roundResult) {
+            case 'win' : humanScore++;
+                alert(`You win the round! You: ${humanScore}  Computer: ${computerScore}`);
+                break;
+
+            case 'lose' : computerScore++;
+                alert(`You lose the round. You: ${humanScore}  Computer: ${computerScore}`);
+                break;
+
+            case 'tie' : 
+                alert(`Round tied! You: ${humanScore}  Computer: ${computerScore}`);
+                break;
+
+            case 'invalid human choice' : 
+                alert('Invalid Choice. Pick one of rock, paper or scissors.');
+                break;
+            
+            default :
+                alert('There was an error in the game.');
+        }
+    }
+    if(humanScore > computerScore) {
+        alert(`You win the game! You: ${humanScore}  Computer: ${computerScore} \nRefresh to play again.`)
+    } else if(humanScore < computerScore) {
+        alert(`Computer won the game. You: ${humanScore}  Computer: ${computerScore} \nRefresh to play again.`)
+    } else {
+        alert(`The game was tied. You: ${humanScore}  Computer: ${computerScore} \nRefresh to play again.`)
+    }
 }
 
 function getHumanChoice() {
@@ -22,6 +49,14 @@ function getHumanChoice() {
     'invalid human choice';
 
     return humanChoice;
+}
+
+function getComputerChoice() {
+    let randomNumber = Math.floor(Math.random() * 3);
+    let computerChoice = (randomNumber === 0) ? 'rock' :
+    (randomNumber === 1) ? 'paper' : 'scissors';
+
+    return computerChoice;
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -48,7 +83,7 @@ function playRound(humanChoice, computerChoice) {
             'invalid human choice' ;
             break;
         
-        default : roundResult = 'computer choice error'
+        default : roundResult = 'computer choice error';
     }
 
     return roundResult;
