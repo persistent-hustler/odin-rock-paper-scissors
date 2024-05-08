@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3);
     let computerChoice = (randomNumber === 0) ? 'rock' :
@@ -16,5 +19,3 @@ function getHumanChoice() {
 
     return humanChoice;
 }
-
-console.log(getHumanChoice());
