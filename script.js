@@ -5,6 +5,7 @@ let computerScoreDisplay = document.querySelector('#computer-score');
 let playerScoreDisplay = document.querySelector('#player-score');
 let playerScore = 0;
 let computerScore = 0;
+let body = document.querySelector('body');
 
 choices.addEventListener('click', (event) => {
     let playerChoice = event.target;
@@ -20,6 +21,14 @@ choices.addEventListener('click', (event) => {
     } else if(roundResult === 'lose') {
         computerScore++;
         computerScoreDisplay.textContent = computerScore;
+    }
+
+    if(playerScore === 5) {
+        body.innerHTML = `<h1>You beat the computer ${playerScore} - ${computerScore}! REFRESH to play again.</h1>`;
+        body.setAttribute('style', 'background-color: green; color: white; text-align: center;');
+    } else if(computerScore === 5) {
+        body.innerHTML = `<h1>You lost to the computer ${playerScore} - ${computerScore}! REFRESH to play again.</h1>`;
+        body.setAttribute('style', 'background-color: red; color: white; text-align: center;');
     }
 });
 
