@@ -10,14 +10,16 @@
     <h1>Rock, Paper, Scissors.</h1>
 
     <div class="choices">
-        <img src="./images/rock.jpeg" alt="rock">
-        <img src="./images/paper.jpeg" alt="paper">
-        <img src="./images/scissors.jpeg" alt="scissors">
+        <img id="rock" src="./images/rock.jpeg" alt="rock">
+        <img id="paper" src="./images/paper.jpeg" alt="paper">
+        <img id="scissors" src="./images/scissors.jpeg" alt="scissors">
     </div>
 
-    <div class="display-message">You win this round!</div>
+    <div class="display-message">Computer Chose: <span id="computer-choice">scissors</span></div>
 
-    <div class="display-message">Computer Score: <span id="computer-score">2</span> &nbsp; &nbsp; Your Score: <span id="player-score">4</span></div>
+    <div class="display-message">You <span id="round-result">win</span> this round! Play again</div>
+
+    <div class="display-message">Computer Score: <span id="computer-score">0</span> &nbsp; &nbsp; Your Score: <span id="player-score">0</span></div>
 
     <script src="./script.js" defer></script>
 </body>
